@@ -36,7 +36,7 @@ form = """
 
 @app.route("/")
 def index():
-    return form.format(encrypt())
+    return form.format('')
 
 @app.route("/", methods=['POST'])
 def encrypt():
@@ -46,7 +46,8 @@ def encrypt():
     rot = int(rot)
     
     encryption = rotate_string(text,rot)
+   
 
-    return form.format('<h1>' + encryption + '</h1>' + '<h1>' + str(rot) + ' is your encryption key</h1>')
+    return form.format(encryption  + ' ' + '[' + str(rot) + ' is your encryption key' + ']')
 
 app.run()
